@@ -3,6 +3,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
 
 project(quake2)
 
+
+##########################################################
+## Quake 2 exe
 set(SRC_QUAKE2
 	win32/cd_win.c
 	client/cl_cin.c
@@ -80,8 +83,9 @@ add_executable(quake2 WIN32 ${SRC_QUAKE2})
 
 target_link_libraries(quake2 winmm wsock32)
 
-project(gamex86)
 
+##########################################################
+## Game dll
 set(SRC_GAME
 	game/g_ai.c
 	game/g_chase.c
@@ -165,8 +169,54 @@ ADD_CUSTOM_COMMAND(TARGET gamex86 POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/gamex86.dll ${CMAKE_SOURCE_DIR}/baseq2/gamex86.dll
 )
 
-project(ref_gl)
 
+##########################################################
+## Ctf dll
+set(SRC_GAME
+	ctf/g_ai.c
+	ctf/g_chase.c
+	ctf/g_cmds.c
+	ctf/g_combat.c
+	ctf/g_ctf.c
+	ctf/g_func.c
+	ctf/g_items.c
+	ctf/g_main.c
+	ctf/g_misc.c
+	ctf/g_monster.c
+	ctf/g_phys.c
+	ctf/g_save.c
+	ctf/g_spawn.c
+	ctf/g_svcmds.c
+	ctf/g_target.c
+	ctf/g_trigger.c
+	ctf/g_utils.c
+	ctf/g_weapon.c
+	ctf/m_move.c
+	ctf/p_client.c
+	ctf/p_hud.c
+	ctf/p_menu.c
+	ctf/p_trail.c
+	ctf/p_view.c
+	ctf/p_weapon.c
+	ctf/q_shared.c
+	ctf/g_ctf.h
+	ctf/g_local.h
+	ctf/game.h
+	ctf/m_player.h
+	ctf/p_menu.h
+	ctf/q_shared.h
+	ctf/ctf.def
+)
+
+add_library(ctfx86 SHARED ${SRC_GAME})
+
+#ADD_CUSTOM_COMMAND(TARGET ctfx86 POST_BUILD
+#	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/ctfx86.dll ${CMAKE_SOURCE_DIR}/ctf/gamex86.dll
+#)
+
+
+##########################################################
+## ref_gl dll
 set(SRC_REFGL
 	ref_gl/gl_draw.c
 	ref_gl/gl_image.c
