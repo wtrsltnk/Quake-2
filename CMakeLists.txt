@@ -251,3 +251,57 @@ set(SRC_REFGL
 add_library(ref_gl SHARED ${SRC_REFGL})
 
 target_link_libraries(ref_gl winmm)
+
+
+
+##########################################################
+## ref_soft dll
+set(SRC_REFSOFT
+	game/q_shared.c
+	win32/q_shwin.c
+	ref_soft/r_aclip.c
+	ref_soft/r_aclipa.asm
+	ref_soft/r_alias.c
+	ref_soft/r_bsp.c
+	ref_soft/r_draw.c
+	ref_soft/r_draw16.asm
+	ref_soft/r_drawa.asm
+	ref_soft/r_edge.c
+	ref_soft/r_edgea.asm
+	ref_soft/r_image.c
+	ref_soft/r_light.c
+	ref_soft/r_main.c
+	ref_soft/r_misc.c
+	ref_soft/r_model.c
+	ref_soft/r_part.c
+	ref_soft/r_poly.c
+	ref_soft/r_polysa.asm
+	ref_soft/r_polyse.c
+	ref_soft/r_rast.c
+	ref_soft/r_scan.c
+	ref_soft/r_scana.asm
+	ref_soft/r_spr8.asm
+	ref_soft/r_sprite.c
+	ref_soft/r_surf.c
+	ref_soft/r_surf8.asm
+	ref_soft/r_varsa.asm
+	win32/rw_ddraw.c
+	win32/rw_dib.c
+	win32/rw_imp.c
+	ref_soft/adivtab.h
+	ref_soft/anorms.h
+	game/q_shared.h
+	qcommon/qcommon.h
+	qcommon/qfiles.h
+	ref_soft/r_local.h
+	ref_soft/r_model.h
+	ref_soft/rand1k.h
+	client/ref.h
+	win32/rw_win.h
+	win32/winquake.h
+	ref_soft/ref_soft.def
+)
+
+add_library(ref_soft SHARED ${SRC_REFGL})
+
+target_link_libraries(ref_soft winmm)
